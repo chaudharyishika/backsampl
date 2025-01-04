@@ -1,0 +1,45 @@
+import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import dotenv from 'dotenv';
+dotenv.config();
+
+import authRouter from "./src/routes/auth.js"
+import formRouter from "./src/routes/formroute.js"
+import reviewRouter from "./src/routes/reviewroute.js"
+import mongoose from "mongoose"
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+// Middleware to parse JSON request bodies
+app.use(bodyParser.json());
+
+const corsOptions = {
+  origin: '*', // Allow all origins
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+};
+
+// Apply CORS middleware
+app.use(cors(corsOptions));
+
+
+
+
+app.use("/api/form", formRouter)
+app.use("/api/auth", authRouter)
+app.use("/api/review", reviewRouter)
+
+// Start the server
+console.log(process.env.MONGO_URI);
+
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => {
+        console.log("Connected to Database");
+
+        app.listen(PORT, () => {
+            console.log("Listening to port 3000");
+        })
+    }).catch((err) => {
+        console.log(err);
+    })
