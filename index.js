@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware to parse JSON request bodies
 app.use(bodyParser.json());
-
+const MONGO_URI = "mongodb+srv://vinayaktoursdevbhumi:<db_password>@cluster0.t32lr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 const corsOptions = {
   origin: '*', // Allow all origins
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
