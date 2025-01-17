@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 5000;
 app.use(bodyParser.json());
 const MONGO_URI = "mongodb+srv://vinayaktoursdevbhumi:<Vinayak@3641>@cluster0.t32lr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 const corsOptions = {
-  origin: '*', // Allow all origins
+  origin: 'https://vinayaktourss.com', // Allow all origins
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
   allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
 };
