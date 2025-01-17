@@ -18,11 +18,12 @@ const corsOptions = {
   origin: 'https://vinayaktourss.com', // Allow all origins
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
   allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+  credentials: true,
 };
 
 // Apply CORS middleware
 app.use(cors(corsOptions));
-
+app.options("*", cors(corsOptions));
 
 
 
